@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,MAAM,CAAC;EACH,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,WAAW;EAC3B,eAAe,EAAE,MAAM;EACvB,UAAU,EAAE,GAAG;CAClB;;AAED,AAAA,MAAM,CAAC;EACH,MAAM,EAAE,MAAM;EACd,UAAU,EAAE,MAAM;CACrB",
+    "sources": [
+        "ClassDetail.scss"
+    ],
+    "names": [],
+    "file": "ClassDetail.css"
+}
