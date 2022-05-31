@@ -1,0 +1,447 @@
+/*評価
+---------------------------------*/
+.stars {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  margin-top: 3em;
+}
+
+.stars input[type='radio'] {
+  display: none;
+}
+
+.stars label {
+  padding-right: 10px;
+  color: #ccc;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.stars label:hover,
+.stars label:hover~label,
+.stars input[type='radio']:checked~label {
+  color: #fc0;
+}
+/*メインページ
+-----------------------------------*/
+.MainItem {
+  padding: 0.5em 1em;
+  margin: 2em 3em 0 3em;
+  color: #5d627b;
+  background: white;
+  border-top: solid 5px #5d627b;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+  text-align: center;
+}
+
+.MainMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+.button{
+  text-decoration: none;
+}
+.button:hover {
+  color: #5d627b;
+}/* マウスが上に載っている状態 */
+
+/* リンク範囲
+--------------------------------*/
+a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+/*メニューランキング見だし
+-------------------------------------*/
+
+.title{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border:solid 6px #5d627b;
+  margin-top: 10%;
+  margin-left: 30%;
+  margin-right: 30%;
+margin-bottom: 10%;
+}
+
+/*学食ランキングメニュー表
+--------------------------------------*/
+
+ol.food{
+  counter-reset:list;
+  list-style-type:none;
+  font: 14px/1.6 'arial narrow', sans-serif;
+  padding:0;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+ol.food li{
+  position:relative;
+  margin: 7px 0 7px 0px;
+  padding-left:43px;
+  font-weight: bold;
+  font-size:16px;
+  line-height: 30px;
+  border: 2px solid #5d627b;
+  color: #5d627b;
+}
+ol.food li:before{
+  counter-increment: list;
+  content: counter(list);
+  position: absolute;
+  left: 0px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  color: #fff;
+  line-height:30px;
+  background: #5d627b;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+ol.food li:after{
+  content:"";
+  display: block;
+  position: absolute;
+  left: 30px;
+  height: 0;
+  width: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 7px solid #5d627b;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/*画面遷移ボタン メインページに戻る
+------------------------------------------------*/
+
+.btn--orange,
+a.btn--orange {
+  color: #fff;
+  background-color: #5d627b;
+  width: 10em;
+  margin-top: 5em;
+  margin-left: 20%;
+  padding-left: 4px;
+}
+.btn--orange:hover,
+a.btn--orange:hover {
+  color: #fff;
+  background: #5d627b;
+}
+
+a.btn--radius {
+   border-radius: 100vh;
+}
+/*画面遷移ボタン2 学部学科入力フォームに戻る
+------------------------------------------------*/
+.btn--orange2,
+a.btn--orange2 {
+  color: #fff;
+  background-color: #5d627b;
+  width: 14em;
+  margin-top: 2em;
+  margin-left: 22%;
+  padding-left: 7px;
+}
+.btn--orange2:hover,
+a.btn--orange2:hover {
+  color: #fff;
+  background: #5d627b;
+}
+/*画面遷移ボタン3  決定
+------------------------------------------------*/
+.btn--orange3,
+a.btn--orange3 {
+  color: #fff;
+  background-color: #5d627b;
+  width: 3em;
+  position: relative;
+  padding-left: 7px;
+  
+}
+.btn--orange3:hover,
+a.btn--orange3:hover {
+  color: #fff;
+  background: #5d627b;
+}
+/*画面遷移ボタン4   学食メニューに戻る
+------------------------------------------------*/
+.btn--orange4,
+a.btn--orange4 {
+  color: #fff;
+  background-color: #5d627b;
+  width: 10em;
+  position: relative;
+  padding-left: 7px;
+  margin: 2em 0 10em 20%;
+}
+.btn--orange4:hover,
+a.btn--orange4:hover {
+  color: #fff;
+  background: #5d627b;
+}
+
+/*画面遷移ボタン5   キャンセル
+------------------------------------------------*/
+.btn--orange5,
+a.btn--orange5 {
+  color: #fff;
+  background-color: #5d627b;
+  width: 10em;
+  position: relative;
+  padding-left: 7px;
+  margin: 0 0 10em 35%;
+}
+.btn--orange5:hover,
+a.btn--orange5:hover {
+  color: #fff;
+  background: #5d627b;
+}
+/*画面遷移ボタン6   スレッドを立てる
+------------------------------------------------*/
+.btn--orange6,
+a.btn--orange6 {
+  color: #fff;
+  background-color: #5d627b;
+  width: 10em;
+  position: relative;
+  padding-left: 7px;
+  margin: 2em 0 10em 10%;
+}
+.btn--orange6:hover,
+a.btn--orange6:hover {
+  color: #fff;
+  background: #5d627b;
+}
+
+/*横並び
+-----------------------*/
+
+.link{
+  display: inline-block;
+  margin: 5em;
+}/* https://www.nowte.net/ui/css-layout-horizontal/  */
+
+.link2{
+  display: inline-block;
+  margin: -7em;
+}
+
+/*授業科目一覧
+-----------------------------------------*/
+ol.ClassList{
+  counter-reset:list;
+  list-style-type:none;
+  font: 14px/1.6 'arial narrow', sans-serif;
+  padding:0;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+ol.ClassList li{
+  position:relative;
+  margin: 7px 0 7px 0px;
+  padding-left:40px;
+  font-weight: bold;
+  font-size:16px;
+  line-height: 30px;
+  border: 2px solid #756C67;
+  color: #756C67;
+}
+ol.ClassList li:before{
+  counter-increment: list;
+  content: counter(list);
+  position: absolute;
+  left: 0px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  color: #fff;
+  line-height:30px;
+  background: #756C67;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* プルダウン
+--------------------------------*/
+.cp_ipselect {
+  position: relative;
+  width: 40%;
+  margin: 2em auto;
+  text-align: center;
+}
+.cp_sl02 {
+  position: relative;
+  font-family: inherit;
+  background-color: transparent;
+  width: 100%;
+  padding: 10px 10px 10px 0;
+  font-size: 18px;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0, 0.3);
+}
+.cp_sl02:focus {
+  outline: none;
+  border-bottom: 1px solid rgba(0,0,0, 0);
+}
+.cp_ipselect .cp_sl02 {
+  appearance: none;
+  -webkit-appearance:none
+}
+.cp_ipselect select::-ms-expand {
+  display: none;
+}
+.cp_ipselect:after {
+  position: absolute;
+  top: 18px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  padding: 0;
+  content: '';
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+.cp_sl02_selectlabel {
+  color: rgba(0,0,0, 0.5);
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 0;
+  top: 10px;
+  transition: 0.2s ease all;
+}
+.cp_sl02:focus ~ .cp_sl02_selectlabel, .cp_sl02:valid ~ .cp_sl02_selectlabel {
+  color: #da3c41;
+  top: -20px;
+  transition: 0.2s ease all;
+  font-size: 14px;
+}
+.cp_sl02_selectbar {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.cp_sl02_selectbar:before, .cp_sl02_selectbar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #da3c41;
+  transition: 0.2s ease all;
+}
+.cp_sl02_selectbar:before {
+  left: 50%;
+}
+.cp_sl02_selectbar:after {
+  right: 50%;
+}
+.cp_sl02:focus ~ .cp_sl06_selectbar:before, .cp_sl06:focus ~ .cp_sl06_selectbar:after {
+  width: 50%;
+}
+.cp_sl02_highlight {
+  position: absolute;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.ifff{
+  font-size: 22px;
+  margin-top: 2em;
+  margin-left: 20%;
+}
+
+/* foodimg
+--------------------------------------*/
+.foodimg img{
+  display: flex;
+  width: 60%;
+  position: relative;
+  justify-content: center;
+  margin:auto;/* 上　右　下　左 */ 
+}
+
+/* review */
+.review{
+  font-size: 18px;
+  border-radius: 100vh;
+  color: #fc0;
+  background-color: #5d627b;
+  width: 3em;
+  margin: 2em 0 0 20%;
+}
+
+/*説明文枠組み
+--------------------------------*/ 
+
+.box11{
+  display: flex;
+  justify-content: center;
+  padding: 0.5em 1em;
+  margin: 1em 20% 1em 20%;
+  color: #5d627b;
+  background: white;
+  border-top: solid 5px #5d627b;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+  text-align: center;
+}
+.box11 p {
+  margin: 0; 
+  padding: 0;
+}
+/*  textarea 
+-------------------------------------*/
+.textlines {
+  display: flex;
+  border: 2px solid #5d627b;  /* 枠線 */
+  border-radius: 0.67em;   /* 角丸 */
+  padding: 0.5em;          /* 内側の余白量 */
+  background-color: white;  /* 背景色 */
+  width: 20em;             /* 横幅 */
+  height: 120px;           /* 高さ */
+  font-size: 1em;          /* 文字サイズ */
+  line-height: 1.2;        /* 行の高さ */
+  margin-top: 10%;
+  margin: auto;
+}
+/*sured name input
+-------------------------------------- */
+.text{
+  display: flex;
+  border: 2px solid #5d627b;  /* 枠線 */
+  border-radius: 0.67em;   /* 角丸 */
+  padding: 0.5em;          /* 内側の余白量 */
+  background-color: white;
+  width: 30em;
+  margin-top: 3em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
