@@ -7,13 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "cafeteria")
 public class CafeteriaPageController {
 
-    @RequestMapping(value = "menu")
+    @RequestMapping(value = "detail")
     String list(){
-        return "cafeteria_menu.html";
-    }
-
-    @RequestMapping(value = "ranking")
-    String ranking(){
-        return "cafeteria_ranking.html";
+        return "FoodDetail.html";
     }
 }

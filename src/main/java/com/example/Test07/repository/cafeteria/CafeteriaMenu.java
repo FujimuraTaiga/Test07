@@ -1,5 +1,9 @@
 package com.example.Test07.repository.cafeteria;
 
+/**
+ * 学食メニューの情報を持つデータクラス
+ * @author FujimuraTaiga
+ */
 public class CafeteriaMenu {
     /**
      * メニューID
