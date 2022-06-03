@@ -1,4 +1,4 @@
-package com.example.Test07.repository.cafeteria;
+package com.example.Test07.repository.C8_Cafeteria;
 
 import org.springframework.dao.DataAccessException;
 
