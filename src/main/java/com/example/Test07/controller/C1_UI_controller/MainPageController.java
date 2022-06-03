@@ -1,4 +1,4 @@
-package com.example.Test07.controller;
+package com.example.Test07.controller.C1_UI_controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,21 +10,21 @@ public class MainPageController {
 
     @RequestMapping(value = "")
     String hello(Model model){
-        return "main.html";
+        return "MainMenu.html";
     }
 
     @RequestMapping(value = "cafeteria")
     String cafeteria(){
-        return "cafeteria_top.html";
+        return "FoodList.html";
     }
 
-    @RequestMapping(value = "course")
+    @RequestMapping(value = "class")
     String course(){
-        return "course_top.html";
+        return "ClassFirmInput.html";
     }
 
     @RequestMapping(value = "thread")
     String thread(){
-        return "thread_top.html";
+        return "NoticeBoardList.html";
     }
 }

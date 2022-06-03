@@ -1,4 +1,4 @@
-package com.example.Test07.repository.cafeteria;
+package com.example.Test07.repository.C8_Cafeteria;
 
 /**
  * 学食投稿の情報を持つデータクラス
