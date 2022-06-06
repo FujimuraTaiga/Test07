@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.tymeleaf.org">
 
 <head>
     <meta charset="utf-8">
-    <title>FoodList</title>
+    <title>学食メニュー | 芝浦便利システム</title>
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
@@ -13,19 +13,16 @@
 <body>
 
     <h1 class="title"> メニューランキング</h1>
-    <ol class="food">
-        <li><a class="button "  href="detail" >かつ丼</a></li>
-        <li><a class="button "  href="detail">つなまよ</a></li>
-        <li><a class="button "  href="detail" >かつ丼</a></li>
-        <li><a class="button "  href="detail" >かつ丼</a></li>
-        <li><a class="button "  href="detail" >かつ丼</a></li>
-        <li><a class="button "  href="detail" >かつ丼</a></li>
-        <li><a class="button "  href="detail" >かつ丼</a></li>
-        
+    <ol class="food" th:each="menu : ${menuList}">
+        <li>
+            <form class="button" action="cafeteria/detail" method="get">
+                <input type="hidden" name="id" th:value="${menu.id}">
+                <input type="submit" th:value="${menu.name}">
+            </form>
+        </li>
     </ol>
     
     <a href="/" class="button btn btn--orange btn--radius">メインページに戻る</a>
-
 
 </body>
 
