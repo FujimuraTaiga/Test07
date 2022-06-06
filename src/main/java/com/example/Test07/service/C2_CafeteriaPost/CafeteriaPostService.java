@@ -1,20 +1,28 @@
 package com.example.Test07.service.C2_CafeteriaPost;
 
+import com.example.Test07.repository.C8_Cafeteria.CafeteriaDAO;
+import com.example.Test07.repository.C8_Cafeteria.CafeteriaMenu;
 import com.example.Test07.repository.C8_Cafeteria.CafeteriaPost;
-import com.example.Test07.repository.C8_Cafeteria.CafeteriaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 
 import java.util.List;
 
 public class CafeteriaPostService {
-    private final CafeteriaRepository cafeteriaRepository = new CafeteriaRepository();
+    private final CafeteriaDAO dao;
+
+    @Autowired
+    CafeteriaPostService(CafeteriaDAO dao){this.dao = dao;}
 
     public void post(String postId, String menuId, double evaluation, String comment) throws DataAccessException {
-        cafeteriaRepository.post(postId, menuId, evaluation, comment);
+        dao.createPost(new CafeteriaPost(postId, menuId, evaluation, comment));
     }
 
-    public  List<CafeteriaPost> read() throws DataAccessException{
-        cafeteriaRepository.readPost();
-        return cafeteriaRepository.getPosts();
+    public  List<CafeteriaPost> readPost() {
+        return dao.readPost();
+    }
+
+    public List<CafeteriaMenu> readMenu() {
+        return dao.readMenu();
     }
 }
