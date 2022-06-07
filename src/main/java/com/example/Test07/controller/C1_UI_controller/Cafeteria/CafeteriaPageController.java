@@ -1,7 +1,5 @@
 package com.example.Test07.controller.C1_UI_controller.Cafeteria;
 
-import com.example.Test07.repository.C8_Cafeteria.CafeteriaDAO;
-import com.example.Test07.repository.C8_Cafeteria.CafeteriaPost;
 import com.example.Test07.service.C2_CafeteriaPost.CafeteriaPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,9 +21,9 @@ public class CafeteriaPageController {
 
     @RequestMapping(value = "/detail")
     String list(Model model, @RequestParam String menuId){
-        model.addAttribute("menu",service.findMenuById(menuId));
-        model.addAttribute("posts",service.readPost(menuId));
-        model.addAttribute("evaluation","★4.9");    //仮実装。投稿DBから評価の平均を取ってくる。
+        model.addAttribute("menu",service.findMenuById(menuId));    //DBからメニューデータを取得してhtmlに反映させる。
+        model.addAttribute("posts",service.readPost(menuId));       //DBから投稿データを取得してhtmlに反映させる。
+        model.addAttribute("evaluation","★4.9");        //仮実装。投稿DBから評価の平均を取ってくる。
         return "FoodDetail.html";
     }
 
@@ -37,10 +35,11 @@ public class CafeteriaPageController {
 
     @RequestMapping(value = "/post")
     String post(RedirectAttributes redirectAttributes, @RequestParam String menuId, @RequestParam int star, @RequestParam String comment){
-        String postId = UUID.randomUUID().toString().substring(0,8);
+
+        String postId = UUID.randomUUID().toString().substring(0,8);        //32文字のIDを生成、先頭の8文字を切り取って投稿IDにする。
         service.createPost(postId,menuId,star,comment);
 
-        redirectAttributes.addAttribute("menuId",menuId);
-        return "redirect:/cafeteria/detail";
+        redirectAttributes.addAttribute("menuId",menuId);      //detailにリダイレクトする時に必要なパラメータを用意
+        return "redirect:/cafeteria/detail";                                //リダイレクト
     }
 }

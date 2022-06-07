@@ -49,7 +49,7 @@ public class CafeteriaDAO {
                         row.get("id").toString(),
                         row.get("name").toString(),
                         row.get("explain").toString(),
-                        (byte[]) row.get("image")
+                        row.get("image").toString()
                 )).toList();
 
         return cafeteriaMenus;
@@ -65,7 +65,7 @@ public class CafeteriaDAO {
                 result.get("id").toString(),
                 result.get("name").toString(),
                 result.get("explain").toString(),
-                (byte[]) result.get("image")
+                result.get("image").toString()
         );
 
         return menu;

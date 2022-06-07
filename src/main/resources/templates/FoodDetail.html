@@ -6,7 +6,7 @@
     <title>FoodDetail</title>
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100&display=swap" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{./css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 
@@ -14,7 +14,7 @@
     <h1 class="title" th:text="${menu.name}"></h1>
 
     <div class="foodimg">
-        <img src="img/food.jpg" alt="food image">
+        <img th:src="@{/image/{item}.png (item=${menu.image})}" alt="food image">
     </div>
 
     <div class="review">
@@ -36,7 +36,7 @@
 
     <br>
 
-    <ol th:each="post : ${posts}">
+    <ul th:each="post : ${posts}">
         <div class="box11">
             <li>
                 <p th:text="${post.evaluation}"></p>
@@ -44,7 +44,7 @@
             </li>
         </div>
 
-    </ol>
+    </ul>
 
     <a href="/cafeteria" class="button btn btn--orange4 btn--radius">学食メニューに戻る</a>
 
