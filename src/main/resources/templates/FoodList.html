@@ -16,7 +16,7 @@
     <ol class="food" th:each="menu : ${menuList}">
         <li>
             <form class="button" action="cafeteria/detail" method="get">
-                <input type="hidden" name="id" th:value="${menu.id}">
+                <input type="hidden" name="menuId" th:value="${menu.id}">
                 <input type="submit" th:value="${menu.name}">
             </form>
         </li>

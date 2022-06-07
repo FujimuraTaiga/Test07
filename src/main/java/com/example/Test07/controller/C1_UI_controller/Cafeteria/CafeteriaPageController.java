@@ -2,6 +2,7 @@ package com.example.Test07.controller.C1_UI_controller.Cafeteria;
 
 import com.example.Test07.repository.C8_Cafeteria.CafeteriaDAO;
 import com.example.Test07.repository.C8_Cafeteria.CafeteriaPost;
+import com.example.Test07.service.C2_CafeteriaPost.CafeteriaPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,30 +16,31 @@ import java.util.UUID;
 @RequestMapping(value = "/cafeteria")
 public class CafeteriaPageController {
 
-    CafeteriaDAO dao;
+    CafeteriaPostService service;
 
     @Autowired
-    CafeteriaPageController(CafeteriaDAO dao){this.dao = dao;}
+    CafeteriaPageController(CafeteriaPostService service){this.service = service;}
 
     @RequestMapping(value = "/detail")
-    String list(Model model, @RequestParam String id){
-        model.addAttribute("menu",dao.findMenuById(id));
-        model.addAttribute("evaluation","★4.9");
+    String list(Model model, @RequestParam String menuId){
+        model.addAttribute("menu",service.findMenuById(menuId));
+        model.addAttribute("posts",service.readPost(menuId));
+        model.addAttribute("evaluation","★4.9");    //仮実装。投稿DBから評価の平均を取ってくる。
         return "FoodDetail.html";
     }
 
     @RequestMapping(value = "/review")
-    String review(Model model, @RequestParam String id){
-        model.addAttribute("menuId",id);
+    String review(Model model, @RequestParam String menuId){
+        model.addAttribute("menuId",menuId);
         return "FoodReviewComment.html";
     }
 
     @RequestMapping(value = "/post")
     String post(RedirectAttributes redirectAttributes, @RequestParam String menuId, @RequestParam int star, @RequestParam String comment){
         String postId = UUID.randomUUID().toString().substring(0,8);
-        dao.createPost(new CafeteriaPost(postId,menuId,star,comment));
+        service.createPost(postId,menuId,star,comment);
 
-        redirectAttributes.addAttribute("id",menuId);
+        redirectAttributes.addAttribute("menuId",menuId);
         return "redirect:/cafeteria/detail";
     }
 }
