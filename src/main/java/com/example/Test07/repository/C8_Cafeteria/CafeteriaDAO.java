@@ -48,7 +48,7 @@ public class CafeteriaDAO {
                 .map((Map<String,Object> row) -> new CafeteriaMenu(
                         row.get("id").toString(),
                         row.get("name").toString(),
-                        row.get("description").toString(),
+                        row.get("explain").toString(),
                         (byte[]) row.get("image")
                 )).toList();
 
