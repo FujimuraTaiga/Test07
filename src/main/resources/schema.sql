@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS cafeteria_menu;
+
 CREATE TABLE IF NOT EXISTS cafeteria_menu(
     id VARCHAR(8),
     name VARCHAR(32),
@@ -13,6 +15,8 @@ CREATE TABLE IF NOT EXISTS cafeteria_post(
     comment VARCHAR(4096),
     PRIMARY KEY(postId)
 );
+
+DROP TABLE IF EXISTS class;
 
 CREATE TABLE IF NOT EXISTS class(
     id VARCHAR(8),
