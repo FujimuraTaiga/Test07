@@ -14,7 +14,7 @@ public class CafeteriaPostService {
     @Autowired
     CafeteriaPostService(CafeteriaDAO dao){this.dao = dao;}
 
-    public void post(String postId, String menuId, double evaluation, String comment) throws DataAccessException {
+    public void post(String postId, String menuId, int evaluation, String comment) throws DataAccessException {
         dao.createPost(new CafeteriaPost(postId, menuId, evaluation, comment));
     }
 
