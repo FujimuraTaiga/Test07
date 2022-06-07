@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.tymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -12,7 +12,8 @@
 </head>
 
 <body>
-    <form type="get" action="">
+    <form type="post" action="/cafeteria/post">
+        <input type="hidden" name="menuId" th:value="${menuId}"/>
         <div class="stars">
             <input id="star5" type="radio" name="star" value="5" />
             <label for="star5">★</label>
@@ -25,13 +26,11 @@
             <input id="star1" type="radio" name="star" value="1" />
             <label for="star1">★</label>
         </div>
+        <textarea class="textlines" name="comment"></textarea><br>
+        <a href="/cafeteria/detail">キャンセル</a>
+        <input type="submit" value="登録"/>
     </form><!-- https://www.will3in.co.jp/frontend-blog/article/5star-rating-on-contact-form7/  -->
-    <p>
-        <textarea class="textlines" placeholder="Share derails of your own experience at this place "></textarea><br>
-    </p>
 
-    <a href="./FoodDetail.html" class="link button btn btn--orange5 btn--radius">キャンセル</a>
-    <a href="./FoodDetail.html" class="link button btn btn--orange3 btn--radius">登録</a>
 </body>
 
 </html>

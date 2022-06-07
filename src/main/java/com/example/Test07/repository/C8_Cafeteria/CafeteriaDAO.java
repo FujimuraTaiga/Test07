@@ -32,7 +32,7 @@ public class CafeteriaDAO {
                 .map((Map<String,Object> row) -> new CafeteriaPost(
                         row.get("postId").toString(),
                         row.get("menuId").toString(),
-                        (double)row.get("evaluation"),
+                        (int)row.get("evaluation"),
                         row.get("comment").toString()
                 )).toList();
 

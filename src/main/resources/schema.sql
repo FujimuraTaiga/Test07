@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS cafeteria_menu(
 CREATE TABLE IF NOT EXISTS cafeteria_post(
     postId VARCHAR(8),
     menuId VARCHAR(8),
-    evaluation DOUBLE,
+    evaluation INT,
     comment VARCHAR(4096),
     PRIMARY KEY(postId)
 );

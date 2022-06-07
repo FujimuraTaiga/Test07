@@ -7,4 +7,4 @@ package com.example.Test07.repository.C8_Cafeteria;
  * @param evaluation 評価
  * @param comment コメント
  */
-public record CafeteriaPost(String postId, String menuId, double evaluation, String comment){}
+public record CafeteriaPost(String postId, String menuId, int evaluation, String comment){}
