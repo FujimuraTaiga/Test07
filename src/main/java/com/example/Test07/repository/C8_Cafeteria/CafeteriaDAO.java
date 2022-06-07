@@ -56,7 +56,18 @@ public class CafeteriaDAO {
     }
 
     public CafeteriaMenu findMenuById(String id){
+
         String query = "SELECT * FROM cafeteria_menu WHERE id = ?";
-        return new CafeteriaMenu("00000001","竜田丼","うまい",null);
+
+        Map<String, Object> result = jdbcTemplate.queryForMap(query,id);
+
+        CafeteriaMenu menu = new CafeteriaMenu(
+                result.get("id").toString(),
+                result.get("name").toString(),
+                result.get("explain").toString(),
+                (byte[]) result.get("image")
+        );
+
+        return menu;
     }
 }
