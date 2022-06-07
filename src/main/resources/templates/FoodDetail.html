@@ -25,30 +25,26 @@
         <p th:text="${menu.explain}"></p>
     </div>
 
+    <br>
+
     <div class="box11">
         <form action="/cafeteria/review" method="get">
-            <input type="hidden" name="id" th:value="${menu.id}">
+            <input type="hidden" name="menuId" th:value="${menu.id}">
             <input type="submit" value="評価＆コメントする">
         </form>
     </div>
 
-    <div class="box11">
-        <p>★4
-            そんくらいは余裕よね♪
-            てか今から食べ盛りって怖すぎwww(๑´ㅂ`๑)
-            草食系いいねー。
-            何も言わない人がいいわ(笑)
-        </p>
-    </div>
-    <div class="box11">
-        <p>★3 ぴのこちゃん
-            えー大丈夫!？
-            働いてて1000いかないってキツくない？💦
-            この日、昼バイキングだったから
-            彼らは3000くらいいってるよね(；´Д`A
-            羨ましいけど代謝いいんだろうなー(-∀-`)
-        </p>
-    </div>
+    <br>
+
+    <ol th:each="post : ${posts}">
+        <div class="box11">
+            <li>
+                <p th:text="${post.evaluation}"></p>
+                <p th:text="${post.comment}"></p><br>
+            </li>
+        </div>
+
+    </ol>
 
     <a href="/cafeteria" class="button btn btn--orange4 btn--radius">学食メニューに戻る</a>
 

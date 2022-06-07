@@ -23,10 +23,10 @@ public class CafeteriaDAO {
         insert.execute(param);
     }
 
-    public List<CafeteriaPost> readPost(){
-        String query = "SELECT * FROM cafeteria_post";
+    public List<CafeteriaPost> readPost(String menuId){
+        String query = "SELECT * FROM cafeteria_post WHERE menuId = ?";
 
-        List<Map<String, Object>> result = jdbcTemplate.queryForList(query);
+        List<Map<String, Object>> result = jdbcTemplate.queryForList(query,menuId);
 
         List<CafeteriaPost> cafeteriaPosts = result.stream()
                 .map((Map<String,Object> row) -> new CafeteriaPost(
