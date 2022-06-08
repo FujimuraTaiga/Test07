@@ -20,8 +20,9 @@ DROP TABLE IF EXISTS class;
 
 CREATE TABLE IF NOT EXISTS class(
     id VARCHAR(8),
+    department VARCHAR(32),
+    major VARCHAR(32),
     name VARCHAR(32),
-    explain VARCHAR(4096),
     PRIMARY KEY(id)
 );
 
