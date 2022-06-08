@@ -64,8 +64,11 @@
             <span class="cp_sl02_selectbar"></span>
             <label class="cp_sl02_selectlabel">選ぶ</label>
         </div>
-    <a href="./MainMenu.html" class="link button btn btn--orange btn--radius">メインページに戻る</a>
-    <a href="./ClassList.html" class="link button btn btn--orange3 btn--radius">決定</a>
+    <form method="get" action="class/list">
+        <input type="submit" value="決定"/>
+    </form>
+
+        <button onclick="history.back()">戻る</button>
 </body>
 
 </html>

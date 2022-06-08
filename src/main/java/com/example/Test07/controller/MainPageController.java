@@ -1,4 +1,4 @@
-package com.example.Test07.controller.C1_UI_controller;
+package com.example.Test07.controller;
 
 import com.example.Test07.repository.C8_Cafeteria.CafeteriaDAO;
 import org.springframework.beans.factory.annotation.Autowired;

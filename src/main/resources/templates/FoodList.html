@@ -12,7 +12,7 @@
 
 <body>
 
-    <h1 class="title"> メニューランキング</h1>
+    <h1 class="title">メニューランキング</h1>
     <ol class="food" th:each="menu : ${menuList}">
         <li>
             <form class="button" action="cafeteria/detail" method="get">
@@ -21,8 +21,8 @@
             </form>
         </li>
     </ol>
-    
-    <a href="/" class="button btn btn--orange btn--radius">メインページに戻る</a>
+
+    <button onclick="history.back()">戻る</button>
 
 </body>
 

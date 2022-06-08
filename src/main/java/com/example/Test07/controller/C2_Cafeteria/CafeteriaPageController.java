@@ -1,4 +1,4 @@
-package com.example.Test07.controller.C1_UI_controller.Cafeteria;
+package com.example.Test07.controller.C2_Cafeteria;
 
 import com.example.Test07.service.C2_CafeteriaPost.CafeteriaPostService;
 import org.springframework.beans.factory.annotation.Autowired;

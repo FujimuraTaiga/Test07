@@ -11,20 +11,17 @@
 </head>
 
 <body>
-    <ol class="ClassList">
-        <li><a class="button" href="./ClassDetail.html">高度情報演習1B</a></li>
-        <li><a class="button" href="./ClassDetail.html">高度情報演習1B</a></li>
-        <li><a class="button" href="./ClassDetail.html">高度情報演習1B</a></li>
-        <li><a class="button" href="./ClassDetail.html">高度情報演習1B</a></li>
-        <li><a class="button" href="./ClassDetail.html">高度情報演習1B</a></li>
-        <li><a class="button" href="./ClassDetail.html">高度情報演習1B</a></li>
-        <li><a class="button" href="./ClassDetail.html">高度情報演習1B</a></li>
-        <li><a class="button" href="./ClassDetail.html">高度情報演習1B</a></li>
-        <li><a class="button" href="./ClassDetail.html">高度情報演習1B</a></li>
-        <li><a class="button" href="./ClassDetail.html">高度情報演習1B</a></li>
+    <h1 class="title">授業一覧</h1>
+    <ol class="ClassList" th:each="class : ${classes}">
+        <li>
+            <form class="button" action="/class/detail" method="get">
+                <input type="hidden" name="classId" th:value="${class.id}">
+                <input type="submit" th:value="${class.name}">
+            </form>
+        </li>
     </ol>
-    <a href="./MainMenu.html" class="button link2 btn btn--orange btn--radius">メインページに戻る</a>
-    <a href="./MainMenu.html" class="button link2 btn btn--orange2 btn--radius">学部学科入力フォームに戻る</a>
+
+    <button onclick="history.back()">戻る</button>
     
 </body>
 
