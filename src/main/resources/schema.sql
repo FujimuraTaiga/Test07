@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS cafeteria_menu(
     id VARCHAR(8),
     name VARCHAR(32),
     explain VARCHAR(4096),
-    image BLOB(65536),
+    image VARCHAR(64),
     PRIMARY KEY(id)
 );
 

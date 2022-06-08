@@ -7,4 +7,4 @@ package com.example.Test07.repository.C8_Cafeteria;
  * @param explain　メニュー説明
  * @param image　メニュー画像
  */
-public record CafeteriaMenu(String id,String name,String explain,byte[] image){}
+public record CafeteriaMenu(String id,String name,String explain,String image){}
