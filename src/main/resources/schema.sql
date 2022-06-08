@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS class(
 CREATE TABLE IF NOT EXISTS class_post(
     postId VARCHAR(8),
     classId VARCHAR(8),
-    evaluation DOUBLE,
+    evaluation INT,
     comment VARCHAR(4096),
     PRIMARY KEY(postId)
 );
