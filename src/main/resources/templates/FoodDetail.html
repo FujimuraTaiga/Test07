@@ -47,7 +47,10 @@
     </ul>
 
 
-    <button onclick="history.back()">戻る</button>
+    <form method="get" action="/cafeteria/detail">
+        <input type="hidden" th:value="${menu.id}">
+        <input type="submit" value="戻る">
+    </form>
 
 </body>
 
