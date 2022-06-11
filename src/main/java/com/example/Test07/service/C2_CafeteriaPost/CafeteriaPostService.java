@@ -9,6 +9,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * CafeteriaDAOで読み取ったデータを加工する事を目的とするクラス。
+ * @author FujimuraTaiga
+ */
 @Service
 public class CafeteriaPostService {
     private final CafeteriaDAO dao;
@@ -27,4 +31,13 @@ public class CafeteriaPostService {
     }
 
     public CafeteriaMenu findMenuById(String menuId){return dao.findMenuById(menuId);}
+
+    /**
+     * @param menuId 評価を知りたいメニューのID
+     * @return 評価の平均値を小数点第二位で四捨五入して返す。
+     */
+    public double findEvaluationAVG(String menuId){
+        double avg = dao.findEvaluationAVG(menuId);
+        return (double) Math.round(avg*10) /10;
+    }
 }
