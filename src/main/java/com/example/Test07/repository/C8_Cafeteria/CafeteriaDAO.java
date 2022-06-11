@@ -10,6 +10,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * DBと学食に関するデータのやり取りをするクラス
+ * @author FujimuraTaiga
+ */
 @Service
 public class CafeteriaDAO {
     private final JdbcTemplate jdbcTemplate;
@@ -69,5 +73,11 @@ public class CafeteriaDAO {
         );
 
         return menu;
+    }
+    
+    public double findEvaluationAVG(String menuId){
+        String query = "SELECT AVG(evaluation) FROM cafeteria_post WHERE menuId = ?";
+        Map<String,Object> result = jdbcTemplate.queryForMap(query,menuId);
+        return (double) result.get("AVG(evaluation)");
     }
 }

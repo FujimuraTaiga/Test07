@@ -29,7 +29,7 @@ public class CafeteriaController {
     String list(Model model, @RequestParam String menuId){
         model.addAttribute("menu",service.findMenuById(menuId));    //DBからメニューデータを取得してhtmlに反映させる。
         model.addAttribute("posts",service.readPost(menuId));       //DBから投稿データを取得してhtmlに反映させる。
-        model.addAttribute("evaluation","★4.9");        //仮実装。投稿DBから評価の平均を取ってくる。
+        model.addAttribute("evaluation","★"+service.findEvaluationAVG(menuId));        //仮実装。投稿DBから評価の平均を取ってくる。
         return "FoodDetail.html";
     }
 
