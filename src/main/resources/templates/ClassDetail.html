@@ -22,9 +22,10 @@
         </p>
     </div>
     <div class="box11">
-        <a class="button" href="./ClassReviewComment.html">
-            <p>>評価&コメントする<</p>
-        </a>
+        <form action="/class/review" method="get">
+            <input type="hidden" name="classId" th:value="${class.id}">
+            <input type="submit" value="評価＆コメントする">
+        </form>
     </div>
     <div class="box11">
         <p>★4
@@ -43,7 +44,8 @@
             羨ましいけど代謝いいんだろうなー(-∀-`)
         </p>
     </div>
-    <a href="./FoodList.html" class="button btn btn--orange4 btn--radius">授業メニューに戻る</a>
+
+    <button onclick="history.back()">戻る</button>
 </body>
 
 </html>

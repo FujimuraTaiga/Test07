@@ -1,4 +1,4 @@
-package com.example.Test07.controller.C1_UI_controller.Cafeteria;
+package com.example.Test07.controller.C2_Cafeteria;
 
 import com.example.Test07.service.C2_CafeteriaPost.CafeteriaPostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +12,18 @@ import java.util.UUID;
 
 @Controller
 @RequestMapping(value = "/cafeteria")
-public class CafeteriaPageController {
+public class CafeteriaController {
 
     CafeteriaPostService service;
 
     @Autowired
-    CafeteriaPageController(CafeteriaPostService service){this.service = service;}
+    CafeteriaController(CafeteriaPostService service){this.service = service;}
+
+    @RequestMapping(value = "")
+    String top(Model model){
+        model.addAttribute("menuList",service.readMenu());
+        return "FoodList.html";
+    }
 
     @RequestMapping(value = "/detail")
     String list(Model model, @RequestParam String menuId){
