@@ -36,9 +36,9 @@ public class ClassDAO {
         return classInfo;
     }
     
-    public void createPost(ClassPost post){
-        SqlParameterSource param = new BeanPropertySqlParameterSource(post);
-        SimpleJdbcInsert insert = new SimpleJdbcInsert(jdbcTemplate).withTableName("class_post");
-        insert.execute(param);
+    //未実装
+    //投稿データをDBに登録するよう実装して欲しい。
+    public void createPost(){
+        
     }
 }
