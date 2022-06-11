@@ -12,12 +12,18 @@ import java.util.UUID;
 
 @Controller
 @RequestMapping(value = "/cafeteria")
-public class CafeteriaPageController {
+public class CafeteriaController {
 
     CafeteriaPostService service;
 
     @Autowired
-    CafeteriaPageController(CafeteriaPostService service){this.service = service;}
+    CafeteriaController(CafeteriaPostService service){this.service = service;}
+
+    @RequestMapping(value = "")
+    String top(Model model){
+        model.addAttribute("menuList",service.readMenu());
+        return "FoodList.html";
+    }
 
     @RequestMapping(value = "/detail")
     String list(Model model, @RequestParam String menuId){

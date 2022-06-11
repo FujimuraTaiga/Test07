@@ -12,7 +12,7 @@
 
 <body>
     <h1 class="title">授業一覧</h1>
-    <ol class="ClassList" th:each="class : ${classes}">
+    <ol class="ClassList" th:each="class : ${classList}">
         <li>
             <form class="button" action="/class/detail" method="get">
                 <input type="hidden" name="classId" th:value="${class.id}">
