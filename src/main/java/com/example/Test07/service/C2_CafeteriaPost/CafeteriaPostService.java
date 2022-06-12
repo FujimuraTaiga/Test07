@@ -36,8 +36,12 @@ public class CafeteriaPostService {
      * @param menuId 評価を知りたいメニューのID
      * @return 評価の平均値を小数点第二位で四捨五入して返す。
      */
-    public double findEvaluationAVG(String menuId){
-        double avg = dao.findEvaluationAVG(menuId);
-        return (double) Math.round(avg*10) /10;
+    public String findEvaluationAVG(String menuId){
+        try{
+            double avg = dao.findEvaluationAVG(menuId);
+            return String.valueOf((double) Math.round(avg*10) /10);
+        }catch (NullPointerException e){
+            return "評価なし";
+        }
     }
 }
