@@ -75,7 +75,7 @@ public class CafeteriaDAO {
         return menu;
     }
     
-    public double findEvaluationAVG(String menuId){
+    public double findEvaluationAVG(String menuId) throws NullPointerException{
         String query = "SELECT AVG(evaluation) FROM cafeteria_post WHERE menuId = ?";
         Map<String,Object> result = jdbcTemplate.queryForMap(query,menuId);
         return (double) result.get("AVG(evaluation)");
