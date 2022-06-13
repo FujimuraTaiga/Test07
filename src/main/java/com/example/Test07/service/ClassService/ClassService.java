@@ -15,8 +15,8 @@ public class ClassService {
     @Autowired
     ClassService(ClassDAO dao){this.dao=dao;}
 
-    public void createPost(ClassPost post){
-        dao.createPost(post);
+    public void createPost(ClassPost postId){
+        dao.createPost(postId);
     }
     public List<ClassPost> readPost(String classId){
         return dao.readPost(classId);
