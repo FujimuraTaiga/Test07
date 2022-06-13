@@ -30,7 +30,7 @@ public class ClassService {
     public String findEvaluationAVG(String classId) {
         try {
             double avg = dao.findEvaluationAVG(classId);
-            return String.valueOf((double) Math.round(avg*10) /10);
+            return "★"+String.valueOf((double) Math.round(avg*10) /10);
         }
     catch(NullPointerException e){
          return "評価なし";

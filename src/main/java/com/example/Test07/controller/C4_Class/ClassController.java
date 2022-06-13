@@ -13,7 +13,7 @@ import java.util.UUID;
 
 /**
  * 授業に関するhttpリクエストに対応するクラス。
- * @author FujimuraTaiga
+ * @author WataruIbe
  */
 
 @Controller
@@ -45,8 +45,8 @@ public class ClassController {
     @RequestMapping(value = "/detail")
     String list(Model model,@RequestParam String classId) {
         model.addAttribute("class", service.findMenuById(classId));
-        model.addAttribute("posts", service.readPost(classId));       //DBから投稿データを取得してhtmlに反映させる。
-        model.addAttribute("evaluation", "★" + service.findEvaluationAVG(classId));        //仮実装。投稿DBから評価の平均を取ってくる。        return "ClassDetail.html";
+        model.addAttribute("posts", service.readPost(classId));                     //DBから投稿データを取得してhtmlに反映させる。
+        model.addAttribute("evaluation", service.findEvaluationAVG(classId));       //投稿DBから評価の平均を取ってくる。        return "ClassDetail.html";
         return "ClassDetail.html";
     }
 

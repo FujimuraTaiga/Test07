@@ -46,7 +46,7 @@ public class CafeteriaPostService {
     public String findEvaluationAVG(String menuId){
         try{
             double avg = dao.findEvaluationAVG(menuId);
-            return String.valueOf((double) Math.round(avg*10) /10);
+            return "★"+String.valueOf((double) Math.round(avg*10) /10);
         }catch (NullPointerException e){
             return "評価なし";
         }
