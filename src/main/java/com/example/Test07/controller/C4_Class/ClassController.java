@@ -32,7 +32,7 @@ public class ClassController {
      */
     @RequestMapping(value = "")
     String top(Model model){
-        model.addAttribute("classList", service.readMenu());
+        model.addAttribute("classList", service.readClassMenu());
         return "ClassList.html";
     }
 
@@ -44,9 +44,9 @@ public class ClassController {
      */
     @RequestMapping(value = "/detail")
     String list(Model model,@RequestParam String classId) {
-        model.addAttribute("class", service.findMenuById(classId));
-        model.addAttribute("posts", service.readPost(classId));       //DBから投稿データを取得してhtmlに反映させる。
-        model.addAttribute("evaluation", "★" + service.findEvaluationAVG(classId));        //仮実装。投稿DBから評価の平均を取ってくる。        return "ClassDetail.html";
+        model.addAttribute("class", service.findClassMenuById(classId));
+        model.addAttribute("posts", service.readClassPost(classId));       //DBから投稿データを取得してhtmlに反映させる。
+        model.addAttribute("evaluation", "★" + service.findClassEvaluationAVG(classId));        //仮実装。投稿DBから評価の平均を取ってくる。        return "ClassDetail.html";
         return "ClassDetail.html";
     }
 
@@ -71,7 +71,7 @@ public class ClassController {
     @RequestMapping(value = "/post")
     String post(RedirectAttributes redirectAttributes,@RequestParam String classId, @RequestParam int star, @RequestParam String comment){
         String postId = UUID.randomUUID().toString().substring(0,8);        //32文字のIDを生成、先頭の8文字を切り取って投稿IDにする。
-        service.createPost(new ClassPost(postId,classId,star,comment));
+        service.createClassPost(new ClassPost(postId,classId,star,comment));
         redirectAttributes.addAttribute("classId",classId);
         return "redirect:/class/detail";
     }
