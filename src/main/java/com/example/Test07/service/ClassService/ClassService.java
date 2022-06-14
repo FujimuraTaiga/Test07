@@ -15,21 +15,21 @@ public class ClassService {
     @Autowired
     ClassService(ClassDAO dao){this.dao=dao;}
 
-    public void createPost(ClassPost postId){
-        dao.createPost(postId);
+    public void createClassPost(ClassPost postId){
+        dao.createClassPost(postId);
     }
-    public List<ClassPost> readPost(String classId){
-        return dao.readPost(classId);
+    public List<ClassPost> readClassPost(String classId){
+        return dao.readClassPost(classId);
     }
-    public List<Class> readMenu(){
-        return dao.readMenu();
+    public List<Class> readClassMenu(){
+        return dao.readClassMenu();
     }
-    public Class findMenuById(String id){
-        return dao. findMenuById(id);
+    public Class findClassMenuById(String id){
+        return dao.findClassMenuById(id);
     }
-    public String findEvaluationAVG(String classId) {
+    public String findClassEvaluationAVG(String classId) {
         try {
-            double avg = dao.findEvaluationAVG(classId);
+            double avg = dao.findClassEvaluationAVG(classId);
             return String.valueOf((double) Math.round(avg*10) /10);
         }
     catch(NullPointerException e){
