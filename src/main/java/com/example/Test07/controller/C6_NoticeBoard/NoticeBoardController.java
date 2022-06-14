@@ -1,5 +1,6 @@
 package com.example.Test07.controller.C6_NoticeBoard;
 
+import com.example.Test07.repository.C10_NoticeBoard.NoticeBoard;
 import com.example.Test07.repository.C10_NoticeBoard.NoticeBoardDAO;
 import com.example.Test07.repository.C10_NoticeBoard.ThreadPost;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.text.AttributedString;
 import java.util.UUID;
 
 @RequestMapping(value = "/notice")
@@ -34,6 +36,14 @@ public class NoticeBoardController {
     @RequestMapping(value = "/thread")
     String review(){
         return "NoticeBoardMake.html";
+    }
+
+    /*スレッドの新規作成*/
+    @RequestMapping(value = "/make")
+    String make(@RequestParam String noticeName){
+        String noticeId = UUID.randomUUID().toString().substring(0,8);
+        dao.createThread(new NoticeBoard(noticeId,noticeName));
+        return "redirect:/notice";
     }
 
     @RequestMapping(value = "/post")
