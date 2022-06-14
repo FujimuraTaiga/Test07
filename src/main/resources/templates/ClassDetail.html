@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja" xmlns:th="www.tymeleaf.org">
+<html lang="ja" xmlns:th="http://www.tymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -10,42 +10,36 @@
 </head>
 
 <body>
-    <h1 class="title"> 高度情報演習1B</h1>
-    <div class="review">★4.9</div>
-    <div class="box11">
-        <p>電子書籍ストア 累計 687,925タイトル 1,407,917冊配信!漫画やラノベが毎日更新!
-            【感想・ネタバレ】Web制作者のためのCSS設計の教科書のレビュー
-            Web制作者のためのCSS設計の教科書
-            谷拓樹
+<h1 class="title" th:text="${class.name}"></h1>
+<div class="review">
+    <p th:text="${evaluation}"></p>
+</div>
 
-            © BookLive Co., Ltd.
-        </p>
-    </div>
+<div class="box11">
+    <p th:text="${class.department}"></p>
+</div>
+<div class="box11">
+    <p th:text="${class.major}"></p>
+</div>
+<div class="box11">
+    <form action="/class/review" method="get">
+        <input type="hidden" name="classId" th:value="${class.id}">
+        <input type="submit" value="評価＆コメントする">
+    </form>
+</div>
+<br>
+
+<ul th:each="post : ${posts}">
     <div class="box11">
-        <form action="/class/review" method="get">
-            <input type="hidden" name="classId" th:value="${class.id}">
-            <input type="submit" value="評価＆コメントする">
-        </form>
-    </div>
-    <div class="box11">
-        <p>★4
-            そんくらいは余裕よね♪
-            てか今から食べ盛りって怖すぎwww(๑´ㅂ`๑)
-            草食系いいねー。
-            何も言わない人がいいわ(笑)
-        </p>
-    </div>
-    <div class="box11">
-        <p>★3 ぴのこちゃん
-            えー大丈夫!？
-            働いてて1000いかないってキツくない？💦
-            この日、昼バイキングだったから
-            彼らは3000くらいいってるよね(；´Д`A
-            羨ましいけど代謝いいんだろうなー(-∀-`)
-        </p>
+        <li>
+            <p th:text="${post.evaluation}"></p>
+            <p th:text="${post.comment}"></p><br>
+        </li>
     </div>
 
-    <button onclick="history.back()">戻る</button>
+</ul>
+
+<button onclick="history.back()">戻る</button>
 </body>
 
 </html>
