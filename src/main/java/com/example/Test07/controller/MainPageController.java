@@ -12,9 +12,4 @@ public class MainPageController {
     String hello(Model model){
         return "MainMenu.html";
     }
-
-    @RequestMapping(value = "thread")
-    String thread(){
-        return "NoticeBoardList.html";
-    }
 }

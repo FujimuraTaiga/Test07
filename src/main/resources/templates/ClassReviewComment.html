@@ -12,6 +12,7 @@
 
 <body>
     <form method="post" action="/class/post">
+        <input type="hidden" name="classId" th:value="${classId}">
         <div class="stars">
             <input id="star5" type="radio" name="star" value="5" />
             <label for="star5">★</label>
@@ -23,10 +24,8 @@
             <label for="star2">★</label>
             <input id="star1" type="radio" name="star" value="1" />
             <label for="star1">★</label><br>
-        </div>
-        <p>
-            <textarea class="textlines"></textarea>
-        </p><br>
+            </div>
+            <textarea class="textlines" name="comment"></textarea><br>
         <input type="button" class="link button btn btn--orange5 btn--radius" value="キャンセル" onclick="history.back()"/>
         <input type="submit" class="link button btn btn--orange3 btn--radius" value="登録"/>
     </form><!-- https://www.will3in.co.jp/frontend-blog/article/5star-rating-on-contact-form7/  -->

@@ -41,7 +41,4 @@ public class NoticeBoardController {
         redirectAttributes.addAttribute("noticeId",noticeId);
         return "redirect:/detail";
     }
-
-
-
 }

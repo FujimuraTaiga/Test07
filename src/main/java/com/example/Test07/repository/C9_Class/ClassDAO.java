@@ -7,7 +7,6 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -16,29 +15,65 @@ public class ClassDAO {
     JdbcTemplate jdbcTemplate;
 
     @Autowired
-    ClassDAO(JdbcTemplate jdbcTemplate){this.jdbcTemplate = jdbcTemplate;}
+    public ClassDAO(JdbcTemplate jdbcTemplate){this.jdbcTemplate = jdbcTemplate;}
 
+    public void createPost(ClassPost post){
+        SqlParameterSource param = new BeanPropertySqlParameterSource(post);
+        SimpleJdbcInsert insert = new SimpleJdbcInsert(jdbcTemplate).withTableName("class_post");
+        insert.execute(param);
+    }
     //仮実装
     //今手入力してるデータをDBから持って来て、classListに追加して返すように実装してほしい
-    public List<Class> readClass(){
-        List<Class> classList = new ArrayList<>();
-        Class class1 = new Class("00000001","工学部","情報工学科","高度情報演習IB");
-        Class class2 = new Class("00000002","システム理工学部","数理科学科","数理最適化");
-        classList.add(class1);
-        classList.add(class2);
-        return classList;
+    public List<ClassPost> readPost(String classId){
+        String query = "SELECT * FROM class_post WHERE classId = ?";
+
+        List<Map<String, Object>> result = jdbcTemplate.queryForList(query,classId);
+
+        List<ClassPost> classPosts = result.stream()
+                .map((Map<String,Object> row) -> new ClassPost(
+                        row.get("postId").toString(),
+                        row.get("classId").toString(),
+                        (int)row.get("evaluation"),
+                        row.get("comment").toString()
+                )).toList();
+
+        return classPosts;
     }
 
-    //仮実装
-    //idが一致する授業データを返すように実装してほしい。
-    public Class findClassById(String classId){
-        Class classInfo = new Class("00000001","工学部","情報工学科","高度情報演習IB");
-        return classInfo;
+    public List<Class> readMenu(){
+        String query = "SELECT * FROM class";
+
+        List<Map<String, Object>> result = jdbcTemplate.queryForList(query);
+
+        List<Class> classMenus = result.stream()
+                .map((Map<String,Object> row) -> new Class(
+                        row.get("id").toString(),
+                        row.get("department").toString(),
+                        row.get("major").toString(),
+                        row.get("name").toString()
+                )).toList();
+
+        return classMenus;
     }
-    
-    //未実装
-    //投稿データをDBに登録するよう実装して欲しい。
-    public void createPost(){
-        
+    public Class findMenuById(String id){
+
+        String query = "SELECT * FROM class WHERE id = ?";
+
+        Map<String, Object> result = jdbcTemplate.queryForMap(query,id);
+
+        Class menu = new Class(
+                result.get("id").toString(),
+                result.get("department").toString(),
+                result.get("major").toString(),
+                result.get("name").toString()
+        );
+
+        return menu;
+    }
+
+    public double findEvaluationAVG(String classId) throws NullPointerException{
+        String query = "SELECT AVG(evaluation) FROM class_post WHERE classId = ?";
+        Map<String,Object> result = jdbcTemplate.queryForMap(query,classId);
+        return (double) result.get("AVG(evaluation)");
     }
 }

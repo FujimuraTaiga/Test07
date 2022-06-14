@@ -1,5 +1,6 @@
 package com.example.Test07.repository.C8_Cafeteria;
 
+import com.example.Test07.repository.C3_Ranking.CafeteriaRanking;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -7,8 +8,10 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * DBと学食に関するデータのやり取りをするクラス
@@ -80,4 +83,17 @@ public class CafeteriaDAO {
         Map<String,Object> result = jdbcTemplate.queryForMap(query,menuId);
         return (double) result.get("AVG(evaluation)");
     }
+
+
+    public List<CafeteriaRanking> ranks(){
+        String query = "SELECT menuId,FROM cafeteria_post group by menuId order by AVG(evaluation) desc ";
+        List<Map<String, Object>> result = jdbcTemplate.queryForList(query);
+        List<CafeteriaRanking> cafeteriaRanks = result.stream()
+                .map((Map<String,Object> row) -> new CafeteriaRanking(
+                        row.get("menuId").toString()
+                )).toList();
+        System.out.println(cafeteriaRanks);
+        return cafeteriaRanks;
+    }
+
 }
