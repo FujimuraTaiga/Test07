@@ -11,14 +11,16 @@
 
 <body>
     <h1 class="title">掲示板</h1>
-    <ol class="NoticeList" th:each="notice : ${noticeList}">
-        <li>
-            <form class="button" action="/notice/detail" method="get">
-                <input type="hidden" name="noticeId" th:value="${notice.id}">
-                <input type="submit" th:value="${notice.name}">
-            </form>
-        </li>
-    </ol>
+    <ul th:each="notice : ${noticeList}">
+        <div class="box11">
+            <li>
+                <form class="button" action="/notice/detail" method="get">
+                    <input type="hidden" name="noticeId" th:value="${notice.id}">
+                    <input type="submit" th:value="${notice.name}">
+                </form>
+            </li>
+        </div>
+    </ul>
 
     <a href="/" class="link button btn btn--orange btn--radius">戻る</a>
 

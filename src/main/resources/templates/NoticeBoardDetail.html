@@ -11,28 +11,21 @@
 
 <body>
     <h1 class="title">掲示板</h1>
-    <div class="box11">
-        <a class="button" href="./NoticeBoardDetail.html"> コメント</a>
+    <ul th:each="post : ${postList}">
+        <div class="box11">
+            <li>
+                <p th:text="${post.comment}">
+            </li>
+        </div>
+    </ul>
+    
+    <form action="/notice/post" method="post">
+        <textarea class="textlines" name="comment" placeholder="コメント入力欄 "></textarea><br>
+        <input type="hidden" name="noticeId" th:value="${noticeId}">
+        <input type="submit" value="コメントする">
+    </form>
 
-    </div>
-    <div class="box11">
-        <a class="button" href="./NoticeBoardDetail.html">コメント</a>
-
-    </div>
-    <div class="box11">
-        <a class="button" href="./NoticeBoardDetail.html">コメント</a>
-
-    </div>
-    <div class="box11">
-        <a class="button" href="./NoticeBoardDetail.html">コメント</a>
-
-    </div>
-    <p>
-        <textarea class="textlines" placeholder="コメント入力欄 "></textarea><br>
-    </p>
-
-    <a href="./NoticeBoardList.html" class="link button btn btn--orange4 btn--radius">掲示板に戻る</a>
-    <a href="./NoticeBoardList.html" class="link button btn btn--orange6 btn--radius">コメントする</a>
+    <a href="/notice" class="link button btn btn--orange4 btn--radius">掲示板に戻る</a>
 
 </body>
 
