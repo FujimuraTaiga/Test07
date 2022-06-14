@@ -11,23 +11,17 @@
 
 <body>
     <h1 class="title">掲示板</h1>
-    <div class="box11">
-        <a class="button" href="./NoticeBoardDetail.html" > スレッド1</a>
-        
-    </div>
-    <div class="box11">
-        <a class="button" href="./NoticeBoardDetail.html" >スレッド2</a>
-        
-    </div>
-    <div class="box11">
-        <a class="button" href="./NoticeBoardDetail.html" >スレッド3</a>
-        
-    </div>
-    <div class="box11">
-        <a class="button" href="./NoticeBoardDetail.html" >スレッド4</a>
-        
-    </div>
-           
+    <ol class="NoticeList" th:each="notice : ${noticeList}">
+        <li>
+            <form class="button" action="/notice/detail" method="get">
+                <input type="hidden" name="noticeId" th:value="${notice.name}">
+                <input type="submit" th:value="${notice.name}">
+            </form>
+        </li>
+    </ol>
+
+    <a href="/">戻る</a>
+
     <a href="./MainMenu.html" class="link button btn btn--orange btn--radius">メインページに戻る</a>
     <a href="./NoticeBoardMake.html" class="link button btn btn--orange6 btn--radius">スレッドを立てる</a>
 </body>
