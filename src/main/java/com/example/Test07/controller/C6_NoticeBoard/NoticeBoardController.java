@@ -30,7 +30,7 @@ public class NoticeBoardController {
         model.addAttribute("notice",dao.readPost(noticeId));
         return "NoticeBoardDetail.html";
     }
-
+  
     @RequestMapping(value = "/thread")
     String review(){
         return "NoticeBoardMake.html";
