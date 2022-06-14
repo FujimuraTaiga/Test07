@@ -1,5 +1,6 @@
 package com.example.Test07.controller.C6_NoticeBoard;
 
+import com.example.Test07.repository.C10_NoticeBoard.NoticeBoard;
 import com.example.Test07.repository.C10_NoticeBoard.NoticeBoardDAO;
 import com.example.Test07.repository.C10_NoticeBoard.ThreadPost;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,8 @@ public class NoticeBoardController {
     /*スレッドの詳細の表示*/
     @RequestMapping(value = "/detail")
     String detail(Model model, @RequestParam String noticeId){
-        model.addAttribute("notice",dao.readPost(noticeId));
+        model.addAttribute("noticeId",noticeId);
+        model.addAttribute("postList",dao.readPost(noticeId));
         return "NoticeBoardDetail.html";
     }
   
@@ -35,12 +37,19 @@ public class NoticeBoardController {
     String review(){
         return "NoticeBoardMake.html";
     }
+    
+    @RequestMapping(value = "/make")
+    String add(@RequestParam String title){
+        String id = UUID.randomUUID().toString().substring(0,8);
+        dao.createThread(new NoticeBoard(id,title));
+        return "redirect:/notice";
+    }
 
     @RequestMapping(value = "/post")
     String post(RedirectAttributes redirectAttributes,@RequestParam String noticeId,@RequestParam String comment){
         String postId = UUID.randomUUID().toString().substring(0,8);
         dao.createPost(new ThreadPost(postId,noticeId,comment));
         redirectAttributes.addAttribute("noticeId",noticeId);
-        return "redirect:/detail";
+        return "redirect:/notice/detail";
     }
 }
