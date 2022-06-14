@@ -17,14 +17,14 @@ public class ClassDAO {
     @Autowired
     public ClassDAO(JdbcTemplate jdbcTemplate){this.jdbcTemplate = jdbcTemplate;}
 
-    public void createPost(ClassPost post){
+    public void createClassPost(ClassPost post){
         SqlParameterSource param = new BeanPropertySqlParameterSource(post);
         SimpleJdbcInsert insert = new SimpleJdbcInsert(jdbcTemplate).withTableName("class_post");
         insert.execute(param);
     }
     //仮実装
     //今手入力してるデータをDBから持って来て、classListに追加して返すように実装してほしい
-    public List<ClassPost> readPost(String classId){
+    public List<ClassPost> readClassPost(String classId){
         String query = "SELECT * FROM class_post WHERE classId = ?";
 
         List<Map<String, Object>> result = jdbcTemplate.queryForList(query,classId);
@@ -40,7 +40,7 @@ public class ClassDAO {
         return classPosts;
     }
 
-    public List<Class> readMenu(){
+    public List<Class> readClassMenu(){
         String query = "SELECT * FROM class";
 
         List<Map<String, Object>> result = jdbcTemplate.queryForList(query);
@@ -55,23 +55,23 @@ public class ClassDAO {
 
         return classMenus;
     }
-    public Class findMenuById(String id){
+    public Class findClassMenuById(String id){
 
         String query = "SELECT * FROM class WHERE id = ?";
 
         Map<String, Object> result = jdbcTemplate.queryForMap(query,id);
 
-        Class menu = new Class(
+        Class classMenu = new Class(
                 result.get("id").toString(),
                 result.get("department").toString(),
                 result.get("major").toString(),
                 result.get("name").toString()
         );
 
-        return menu;
+        return classMenu;
     }
 
-    public double findEvaluationAVG(String classId) throws NullPointerException{
+    public double findClassEvaluationAVG(String classId) throws NullPointerException{
         String query = "SELECT AVG(evaluation) FROM class_post WHERE classId = ?";
         Map<String,Object> result = jdbcTemplate.queryForMap(query,classId);
         return (double) result.get("AVG(evaluation)");
