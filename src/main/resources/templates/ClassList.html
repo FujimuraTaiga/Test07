@@ -12,8 +12,8 @@
 
 <body>
     <h1 class="title">授業一覧</h1>
-    <ol class="ClassList" th:each="class : ${classList}">
-        <li>
+    <ol class="ClassList">
+        <li th:each="class : ${classList}">
             <form class="button" action="/class/detail" method="get">
                 <input type="hidden" name="classId" th:value="${class.id}">
                 <input type="submit" th:value="${class.name}">
@@ -21,7 +21,7 @@
         </li>
     </ol>
 
-    <a href="/">戻る</a>
+    <a href="/" class="button btn--orange btn--radius">メインページに戻る</a>
     
 </body>
 
