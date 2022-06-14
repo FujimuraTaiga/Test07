@@ -11,7 +11,7 @@
 
 <body>
     <h1 class="title">掲示板</h1>
-    <ol class="NoticeList" th:each="notice : ${noticeList}">
+    <ol class="food" th:each="notice : ${noticeList}">
         <li>
             <form class="button" action="/notice/detail" method="get">
                 <input type="hidden" name="noticeId" th:value="${notice.id}">
@@ -21,8 +21,7 @@
     </ol>
 
     <a href="/">戻る</a>
+    <a href="/notice/thread">スレッドを立てる</a>
 
-    <a href="./MainMenu.html" class="link button btn btn--orange btn--radius">メインページに戻る</a>
-    <a href="./NoticeBoardMake.html" class="link button btn btn--orange6 btn--radius">スレッドを立てる</a>
 </body>
 </html>

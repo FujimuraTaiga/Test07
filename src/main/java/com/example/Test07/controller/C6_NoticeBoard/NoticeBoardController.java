@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.UUID;
 
-@RequestMapping(value = "/thread")
+@RequestMapping(value = "/notice")
 @Controller
 public class NoticeBoardController {
     NoticeBoardDAO dao;
@@ -31,13 +31,12 @@ public class NoticeBoardController {
         return "NoticeBoardDetail.html";
     }
 
-    /*
-    @RequestMapping(value = "/review")
-    String review(Model model,@RequestParam String noticeId){
-        model.addAttribute("noticeId",noticeId);
-        return "Notice9999.html";
+    
+    @RequestMapping(value = "/thread")
+    String review(){
+        return "NoticeBoardMake.html";
     }
-    */
+    
 
     @RequestMapping(value = "/post")
     String post(RedirectAttributes redirectAttributes,@RequestParam String noticeId,@RequestParam String comment){
