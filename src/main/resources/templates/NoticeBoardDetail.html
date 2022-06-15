@@ -22,10 +22,9 @@
     <form action="/notice/post" method="post">
         <textarea class="textlines" name="comment" placeholder="コメント入力欄 "></textarea><br>
         <input type="hidden" name="noticeId" th:value="${noticeId}">
-        <input type="submit" value="コメントする">
+        <input type="submit" class="link button btn btn--orange4 btn--radius" value="コメントする">
+        <input type="button" class="link button btn btn--orange4 btn--radius" value="戻る" onclick="history.back()">
     </form>
-
-    <a href="/notice" class="link button btn btn--orange4 btn--radius">掲示板に戻る</a>
 
 </body>
 
