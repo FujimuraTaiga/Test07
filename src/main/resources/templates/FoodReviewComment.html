@@ -4,11 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>FoodReviewComment</title>
-    <!--css -->
-    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/style.css}">
-    <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 
 <body>
@@ -27,9 +23,11 @@
             <label for="star1">★</label>
         </div>
         <textarea class="textlines" name="comment"></textarea><br>
-        <input type="button" class="link button btn btn--orange5 btn--radius" value="キャンセル" onclick="history.back()"/>
-        <input type="submit" class="link button btn btn--orange3 btn--radius" value="登録"/>
-    </form><!-- https://www.will3in.co.jp/frontend-blog/article/5star-rating-on-contact-form7/  -->
+    <div class="parent">
+            <input type="button" class="link button btn--orange5 btn--radius" value="キャンセル" onclick="history.back()"/>
+            <input type="submit" class="link button btn--orange3 btn--radius" value="登録"/>
+        </div>
+        </form><!-- https://www.will3in.co.jp/frontend-blog/article/5star-rating-on-contact-form7/  -->
 
 </body>
 

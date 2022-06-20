@@ -4,8 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>NoticeBoardDetail</title>
-    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
@@ -22,11 +21,11 @@
     <form action="/notice/post" method="post">
         <textarea class="textlines" name="comment" placeholder="コメント入力欄 "></textarea><br>
         <input type="hidden" name="noticeId" th:value="${noticeId}">
-        <input type="submit" value="コメントする">
+    <div class="parent">
+        <input type="button" class="link button btn--orange5 btn--radius" value="キャンセル" onclick="history.back()"/>
+        <input type="submit"class="link　button btn--orange5 btn--radius" value="コメントする" >
+        </div>
     </form>
-
-    <a href="/notice" class="link button btn btn--orange4 btn--radius">掲示板に戻る</a>
-
 </body>
 
 </html>
