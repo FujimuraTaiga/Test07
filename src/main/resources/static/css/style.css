@@ -134,9 +134,8 @@ a.btn--orange {
   color: #fff;
   background-color: #5d627b;
   width: 10em;
-  margin-top: 5em;
-  margin-left: 20%;
   padding-left: 4px;
+  margin-bottom: 10em;
 }
 .btn--orange:hover,
 a.btn--orange:hover {
@@ -203,9 +202,7 @@ a.btn--orange5 {
   color: #fff;
   background-color: #5d627b;
   width: 10em;
-  position: relative;
   padding-left: 7px;
-  margin: 0 0 10em 35%;
 }
 .btn--orange5:hover,
 a.btn--orange5:hover {
@@ -233,13 +230,11 @@ a.btn--orange6:hover {
 -----------------------*/
 
 .link{
-  display: inline-block;
-  margin: 5em;
+  display:inline-block;
 }/* https://www.nowte.net/ui/css-layout-horizontal/  */
 
 .link2{
   display: inline-block;
-  margin: -7em;
 }
 
 /*授業科目一覧
@@ -443,7 +438,9 @@ ol.ClassList li:before{
   margin-left: auto;
   margin-right: auto;
 }
-
-
-
-
+.parent {
+text-align:center;
+}
+.test08{
+justify-content:left !important;
+}
