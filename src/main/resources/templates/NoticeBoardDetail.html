@@ -21,9 +21,9 @@
     <form action="/notice/post" method="post">
         <textarea class="textlines" name="comment" placeholder="コメント入力欄 "></textarea><br>
         <input type="hidden" name="noticeId" th:value="${noticeId}">
-    <div class="parent">
-        <input type="button" class="link button btn--orange5 btn--radius" value="キャンセル" onclick="history.back()"/>
-        <input type="submit"class="link　button btn--orange5 btn--radius" value="コメントする" >
+        <div class="parent">
+          <input type="button" class="link button btn--orange5 btn--radius" value="キャンセル" onclick="history.back()"/>
+          <input type="submit"class="link　button btn--orange5 btn--radius" value="コメントする" >
         </div>
     </form>
 </body>
