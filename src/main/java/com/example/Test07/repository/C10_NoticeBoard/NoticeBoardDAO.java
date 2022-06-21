@@ -12,18 +12,35 @@ import java.util.ArrayList;
 import java.util.Map;
 
 @Service
+
+
+
 public class NoticeBoardDAO{
+    /**
+     * Noticeboard
+     * 掲示板のスレッドを作ることや読み取ること、スレッドに投稿することや投稿を読み取るためのクラス。
+     */
     private final JdbcTemplate jdbcTemplate;
 
     public NoticeBoardDAO(JdbcTemplate jdbcTemplate){this.jdbcTemplate = jdbcTemplate;}
-  
+
+    /**
+     * 投稿情報をDB(投稿Id,スレッドId,コメント)をDB(thread_post)に登録する。
+     * ＠param ThreadPost スレッドへの投稿情報を登録するためのpostId,threadId,commentを持つ。
+     */
     public void createPost(ThreadPost post){
         SqlParameterSource param = new BeanPropertySqlParameterSource(post);
         SimpleJdbcInsert insert = new SimpleJdbcInsert(jdbcTemplate).withTableName("thread_post");
         insert.execute(param);
     }
 
+
+    /**
+     * 投稿情報をDB(投稿Id,スレッドId,コメント)をDB(thread_post)から読み取る。
+     * ＠param threadId 投稿を識別するId
+     */
     public List<ThreadPost> readPost(String threadId){
+
         String query = "SELECT * FROM thread_post WHERE threadId = ?";
 
         List<Map<String, Object>> result = jdbcTemplate.queryForList(query,threadId);
@@ -39,6 +56,22 @@ public class NoticeBoardDAO{
     }
 
 
+    /**
+     * スレッド情報（id,スレッド名）をDB(thread)に登録する。
+     * @param NoticeBoard スレッド情報を登録するためのidとnameを持つ。
+     */
+    public void createThread(NoticeBoard post){
+
+        SqlParameterSource param = new BeanPropertySqlParameterSource(post);
+        SimpleJdbcInsert insert = new SimpleJdbcInsert(jdbcTemplate).withTableName("thread");
+        insert.execute(param);
+    }
+
+
+    /**
+     * スレッド情報（id,スレッド名）をDB(thread)から読み取る。
+     * @return NoticeBoard スレッド情報を返す。
+     */
     public List<NoticeBoard> readThread(){
         String query = "SELECT * FROM thread";
 
@@ -52,10 +85,4 @@ public class NoticeBoardDAO{
 
         return NoticeBoard;
     }
-
-    public void createThread(NoticeBoard post){
-        SqlParameterSource param = new BeanPropertySqlParameterSource(post);
-        SimpleJdbcInsert insert = new SimpleJdbcInsert(jdbcTemplate).withTableName("thread");
-        insert.execute(param);
-    }
-}
+  

@@ -46,7 +46,7 @@ public class ClassController {
     String list(Model model,@RequestParam String classId) {
         model.addAttribute("class", service.findClassMenuById(classId));
         model.addAttribute("posts", service.readClassPost(classId));       //DBから投稿データを取得してhtmlに反映させる。
-        model.addAttribute("evaluation", "★" + service.findClassEvaluationAVG(classId));        //仮実装。投稿DBから評価の平均を取ってくる。        return "ClassDetail.html";
+        model.addAttribute("evaluation", service.findClassEvaluationAVG(classId));        //仮実装。投稿DBから評価の平均を取ってくる。        return "ClassDetail.html";
         return "ClassDetail.html";
     }
 
