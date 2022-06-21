@@ -40,9 +40,9 @@ public class NoticeBoardController {
 
     /*スレッドの新規作成*/
     @RequestMapping(value = "/make")
-    String make(@RequestParam String noticeName){
+    String make(@RequestParam String title){
         String noticeId = UUID.randomUUID().toString().substring(0,8);
-        dao.createThread(new NoticeBoard(noticeId,noticeName));
+        dao.createThread(new NoticeBoard(noticeId,title));
         return "redirect:/notice";
     }
 
