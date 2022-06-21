@@ -20,7 +20,7 @@ import java.util.Map;
 
 @Service
 public class NoticeBoardDAO {
-    
+
     private final JdbcTemplate jdbcTemplate;
 
     public NoticeBoardDAO(JdbcTemplate jdbcTemplate) {
@@ -29,6 +29,7 @@ public class NoticeBoardDAO {
 
     /**
      * 投稿情報をDB(投稿Id,スレッドId,コメント)をDB(thread_post)に登録する。
+     *
      * @param post スレッドへの投稿情報を登録するためのpostId,threadId,commentを持つ。
      */
     public void createPost(ThreadPost post) {
@@ -40,7 +41,8 @@ public class NoticeBoardDAO {
 
     /**
      * 投稿情報をDB(投稿Id,スレッドId,コメント)をDB(thread_post)から読み取る。
-     * @param  threadId 投稿を識別するId
+     *
+     * @param threadId 投稿を識別するId
      */
     public List<ThreadPost> readPost(String threadId) {
 
@@ -61,6 +63,7 @@ public class NoticeBoardDAO {
 
     /**
      * スレッド情報（id,スレッド名）をDB(thread)に登録する。
+     *
      * @param post スレッド情報を登録するためのidとnameを持つ。
      */
     public void createThread(NoticeBoard post) {
@@ -73,6 +76,7 @@ public class NoticeBoardDAO {
 
     /**
      * スレッド情報（id,スレッド名）をDB(thread)から読み取る。
+     *
      * @return NoticeBoard スレッド情報を返す。
      */
     public List<NoticeBoard> readThread() {
@@ -88,3 +92,4 @@ public class NoticeBoardDAO {
 
         return noticeBoardList;
     }
+}
