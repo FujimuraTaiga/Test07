@@ -110,7 +110,13 @@ public class CafeteriaDAO {
         return (double) result.get("AVG(evaluation)");
     }
 
-
+    /**
+     * 2022/06/22
+     * C3 学食ランキング処理
+     * @return メニューIDをランキング順リスト化
+     * @author ShojiAyumu
+     * ver. 1.0.0
+     */
     public List<CafeteriaRanking> ranks(){
         String query = "SELECT menuId,FROM cafeteria_post group by menuId order by AVG(evaluation) desc ";
         List<Map<String, Object>> result = jdbcTemplate.queryForList(query);
