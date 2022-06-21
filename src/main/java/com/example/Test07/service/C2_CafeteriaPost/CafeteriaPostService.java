@@ -12,16 +12,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * CafeteriaDAOで読み取ったデータを加工する事を目的とするクラス。
+ * 2022/06/21
+ * CafeteriaDAOで読み取ったデータに対し、加工やエラー処理を行うクラス。
  * @author FujimuraTaiga
+ * ver. 1.0.0
  */
 @Service
 public class CafeteriaPostService {
     private final CafeteriaDAO dao;
-
+    
     @Autowired
     CafeteriaPostService(CafeteriaDAO dao){this.dao = dao;}
 
+    /**
+     * 
+     * @param postId
+     * @param menuId
+     * @param evaluation
+     * @param comment
+     * @throws DataAccessException
+     */
     public void createPost(String postId, String menuId, int evaluation, String comment) throws DataAccessException {
         dao.createPost(new CafeteriaPost(postId, menuId, evaluation, comment));
     }

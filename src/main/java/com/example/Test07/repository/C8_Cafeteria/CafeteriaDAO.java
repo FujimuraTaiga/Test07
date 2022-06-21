@@ -8,15 +8,17 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
- * DBと学食に関するデータのやり取りをするクラス
- * @author FujimuraTaiga
+ * 2022/06/21
+ * C5 学食データ処理
+ * 学食データについてDBとやり取りをするクラス
+ * @author FujimuraTaiga,SyojiAyumu
+ * ver. 1.0.0
  */
+
 @Service
 public class CafeteriaDAO {
     private final JdbcTemplate jdbcTemplate;
@@ -24,12 +26,21 @@ public class CafeteriaDAO {
     @Autowired
     public CafeteriaDAO(JdbcTemplate jdbcTemplate){this.jdbcTemplate = jdbcTemplate;}
 
+    /**
+     * 評価・口コミの投稿をDBに登録する関数
+     * @param post 投稿データ（投稿Id,メニューId,評価,コメント）を持つレコード
+     */
     public void createPost(CafeteriaPost post){
         SqlParameterSource param = new BeanPropertySqlParameterSource(post);
         SimpleJdbcInsert insert = new SimpleJdbcInsert(jdbcTemplate).withTableName("cafeteria_post");
         insert.execute(param);
     }
 
+    /**
+     * メニューIdの一致する投稿データをListにして返す関数
+     * @param menuId メニューを識別するId
+     * @return 投稿データ（投稿Id,メニューId,評価,コメント）を持つレコードのList
+     */
     public List<CafeteriaPost> readPost(String menuId){
         String query = "SELECT * FROM cafeteria_post WHERE menuId = ?";
 
@@ -46,6 +57,10 @@ public class CafeteriaDAO {
         return cafeteriaPosts;
     }
 
+    /**
+     * 全てのメニューデータを返す関数
+     * @return メニューデータ（メニューId,メニュー名,メニュー説明,メニュー画像のファイル名）のList
+     */
     public List<CafeteriaMenu> readMenu(){
         String query = "SELECT * FROM cafeteria_menu";
 
@@ -62,6 +77,11 @@ public class CafeteriaDAO {
         return cafeteriaMenus;
     }
 
+    /**
+     * Idの一致するメニューデータを返す関数
+     * @param id 学食メニューを識別するId
+     * @return 学食メニューデータ（メニューId,メニュー名,メニュー説明,メニュー画像のファイル名）を持つレコード
+     */
     public CafeteriaMenu findMenuById(String id){
 
         String query = "SELECT * FROM cafeteria_menu WHERE id = ?";
@@ -77,7 +97,13 @@ public class CafeteriaDAO {
 
         return menu;
     }
-    
+
+    /**
+     * メニューの平均評価を返す関数
+     * @param menuId メニューを識別するId
+     * @return 評価の平均値
+     * @throws NullPointerException 投稿データがない場合、平均評価を求められないのでエラーを投げる
+     */
     public double findEvaluationAVG(String menuId) throws NullPointerException{
         String query = "SELECT AVG(evaluation) FROM cafeteria_post WHERE menuId = ?";
         Map<String,Object> result = jdbcTemplate.queryForMap(query,menuId);
