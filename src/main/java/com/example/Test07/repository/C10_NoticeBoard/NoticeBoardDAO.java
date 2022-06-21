@@ -81,13 +81,11 @@ public class NoticeBoardDAO {
 
         List<Map<String, Object>> result = jdbcTemplate.queryForList(query);
 
-        List<NoticeBoard> NoticeBoard = result.stream()
+        List<NoticeBoard> noticeBoardList = result.stream()
                 .map((Map<String, Object> row) -> new NoticeBoard(
                         row.get("id").toString(),
                         row.get("name").toString()
                 )).toList();
 
-        return NoticeBoard;
+        return noticeBoardList;
     }
-}
-  
