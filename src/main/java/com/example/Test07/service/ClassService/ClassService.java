@@ -4,10 +4,16 @@ import com.example.Test07.repository.C9_Class.Class;
 import com.example.Test07.repository.C9_Class.ClassDAO;
 import com.example.Test07.repository.C9_Class.ClassPost;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+/**
+ * 2022/06/21
+ * ClassDAOで読み取ったデータに対し、加工やエラー処理を行うクラス。
+ * @author WataruIbe
+ * ver. 1.0.0
+ */
 @Service
 public class ClassService {
     ClassDAO dao;

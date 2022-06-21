@@ -14,7 +14,7 @@ import java.util.UUID;
 /**
  * 2022/06/21
  * 授業に関するhttpリクエストに対応するクラス。
- * @author FujimuraTaiga
+ * @author WataruIbe
  * ver. 1.0.0
  */
 

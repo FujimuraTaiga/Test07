@@ -89,4 +89,3 @@ public class NoticeBoardDAO {
 
         return noticeBoardList;
     }
-}
