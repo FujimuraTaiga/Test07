@@ -8,6 +8,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * 2022/06/21
+ * ClassDAOで読み取ったデータに対し、加工やエラー処理を行うクラス。
+ * @author WararuIbe,FujimuraTaiga
+ * ver. 1.0.0
+ */
+
 @Service
 public class ClassService {
     ClassDAO dao;
@@ -27,6 +34,13 @@ public class ClassService {
     public Class findClassMenuById(String id){
         return dao.findClassMenuById(id);
     }
+
+    /**
+     * dao.findClassて取得したデータに★をつけて返す。
+     * NullPointerExceptionをキャッチした場合、"★なし"を返す。
+     * @param classId 授業を識別するId
+     * @return 評価の平均
+     */
     public String findClassEvaluationAVG(String classId) {
         try {
             double avg = dao.findClassEvaluationAVG(classId);
