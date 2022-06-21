@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * 2022/06/21
  * CafeteriaDAOで読み取ったデータに対し、加工やエラー処理を行うクラス。
- * @author FujimuraTaiga
+ * @author FujimuraTaiga,ShojiAyumu
  * ver. 1.0.0
  */
 @Service
@@ -23,25 +23,21 @@ public class CafeteriaPostService {
     
     @Autowired
     CafeteriaPostService(CafeteriaDAO dao){this.dao = dao;}
-
-    /**
-     * 
-     * @param postId
-     * @param menuId
-     * @param evaluation
-     * @param comment
-     * @throws DataAccessException
-     */
-    public void createPost(String postId, String menuId, int evaluation, String comment) throws DataAccessException {
+    
+    public void createPost(String postId, String menuId, int evaluation, String comment)  {
         dao.createPost(new CafeteriaPost(postId, menuId, evaluation, comment));
     }
 
     public  List<CafeteriaPost> readPost(String menuId) {return dao.readPost(menuId);}
 
-    public List<CafeteriaMenu> readMenu() {
+    /**
+     * 評価のランキング順に並べ替えた学食メニューデータのリストを返す関数
+     * @return ランキング順に並べ替えた学食メニューデータ（投稿Id,メニューId,評価,コメント）のList
+     */
+    public List<CafeteriaMenu> readMenuRanking() {
         List<CafeteriaMenu> menuList = new ArrayList<>();
         List<CafeteriaRanking> ranking = dao.ranks();
-        for(CafeteriaRanking id:ranking){
+        for(CafeteriaRanking id : ranking){
             menuList.add(dao.findMenuById(id.menuId()));
         }
         return menuList;
@@ -50,6 +46,8 @@ public class CafeteriaPostService {
     public CafeteriaMenu findMenuById(String menuId){return dao.findMenuById(menuId);}
 
     /**
+     * dao.findEvaluationAVGのデータを文字列に変換し、★をつけて返す。
+     * NullPoinerExceptionをキャッチすると”★なし”を返す。
      * @param menuId 評価を知りたいメニューのID
      * @return 評価の平均値を小数点第二位で四捨五入して返す。
      */

@@ -1,4 +1,5 @@
 package com.example.Test07.repository.C9_Class;
+
 /**
  * 2022/06/21
  * 食堂の投稿に関するデータを保持するデータレコード

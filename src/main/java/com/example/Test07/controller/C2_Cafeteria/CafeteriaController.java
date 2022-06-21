@@ -34,7 +34,7 @@ public class CafeteriaController {
      */
     @RequestMapping(value = "")
     String top(Model model){
-        model.addAttribute("menuList",service.readMenu());
+        model.addAttribute("menuList",service.readMenuRanking());
         return "FoodList.html";
     }
 

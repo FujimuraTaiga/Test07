@@ -1,10 +1,10 @@
 package com.example.Test07.repository.C10_NoticeBoard;
 
-
-import com.example.Test07.controller.C4_Class.ClassController;
-import com.example.Test07.service.ClassService.ClassService;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-
+/**
+ * 2022/06/21
+ * 掲示板データ（掲示板Id,名前）を持つレコード
+ * @param id 掲示板を識別するId
+ * @param name 掲示板の名前
+ * ver. 1.0.0
+ */
 public record NoticeBoard(String id,String name) {}
