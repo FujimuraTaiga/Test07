@@ -1,8 +1,8 @@
 package com.example.Test07.controller.C6_NoticeBoard;
 
 import com.example.Test07.repository.C10_NoticeBoard.NoticeBoard;
-import com.example.Test07.repository.C10_NoticeBoard.NoticeBoardDAO;
 import com.example.Test07.repository.C10_NoticeBoard.ThreadPost;
+import com.example.Test07.service.NoticeBoard.NoticeBoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.text.AttributedString;
 import java.util.UUID;
 
 /**
@@ -20,9 +19,9 @@ import java.util.UUID;
 @RequestMapping(value = "/notice")
 @Controller
 public class NoticeBoardController {
-    NoticeBoardDAO dao;
+    NoticeBoardService service;
     @Autowired
-    NoticeBoardController(NoticeBoardDAO dao){ this.dao = dao; }
+    NoticeBoardController(NoticeBoardService service){ this.service = service; }
 
     /**
      * NoticeDAOから授業情報のリストを取得し、htmlにそのデータを渡す。
@@ -31,7 +30,7 @@ public class NoticeBoardController {
      */
     @RequestMapping(value = "")
     String top(Model model){
-        model.addAttribute("noticeList",dao.readThread());
+        model.addAttribute("noticeList",service.readThread());
         return "NoticeBoardList.html";
     }
 
@@ -44,7 +43,7 @@ public class NoticeBoardController {
     @RequestMapping(value = "/detail")
     String detail(Model model, @RequestParam String noticeId){
         model.addAttribute("noticeId",noticeId);
-        model.addAttribute("postList",dao.readPost(noticeId));
+        model.addAttribute("postList",service.readPost(noticeId));
         return "NoticeBoardDetail.html";
     }
 
@@ -67,7 +66,7 @@ public class NoticeBoardController {
     @RequestMapping(value = "/make")
     String make(@RequestParam String title){
         String noticeId = UUID.randomUUID().toString().substring(0,8);
-        dao.createThread(new NoticeBoard(noticeId,title));
+        service.createThread(new NoticeBoard(noticeId,title));
         return "redirect:/notice";
     }
 
@@ -80,7 +79,7 @@ public class NoticeBoardController {
     @RequestMapping(value = "/post")
     String post(RedirectAttributes redirectAttributes,@RequestParam String noticeId,@RequestParam String comment){
         String postId = UUID.randomUUID().toString().substring(0,8);
-        dao.createPost(new ThreadPost(postId,noticeId,comment));
+        service.createPost(new ThreadPost(postId,noticeId,comment));
         redirectAttributes.addAttribute("noticeId",noticeId);
         return "redirect:/notice/detail";
     }

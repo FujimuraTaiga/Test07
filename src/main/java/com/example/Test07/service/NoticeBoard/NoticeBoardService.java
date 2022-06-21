@@ -25,7 +25,7 @@ public class NoticeBoardService {
     
     public List<ThreadPost> readPost(String threadId){return dao.readPost(threadId);}
     
-    public List<NoticeBoard> readTread(){return dao.readThread();}
+    public List<NoticeBoard> readThread(){return dao.readThread();}
     
     public void createThread(NoticeBoard noticeBoard){dao.createThread(noticeBoard);}
 }
