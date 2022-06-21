@@ -4,31 +4,24 @@
 <head>
     <meta charset="utf-8">
     <title>NoticeBoardList</title>
-    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
     <h1 class="title">掲示板</h1>
-    <div class="box11">
-        <a class="button" href="./NoticeBoardDetail.html" > スレッド1</a>
-        
+    <ul th:each="notice : ${noticeList}">
+        <div class="box11">
+            <li>
+                <form class="button" action="/notice/detail" method="get">
+                    <input type="hidden" name="noticeId" th:value="${notice.id}">
+                    <input type="submit" th:value="${notice.name}">
+                </form>
+            </li>
+        </div>
+    </ul>
+<div class="parent">
+    <input type="button" class="link button btn--orange5 btn--radius" value="メインページに戻る" onclick="history.back()"/>
+    <a href="/notice/thread" class="link button btn--orange ">スレッドを立てる</a>
     </div>
-    <div class="box11">
-        <a class="button" href="./NoticeBoardDetail.html" >スレッド2</a>
-        
-    </div>
-    <div class="box11">
-        <a class="button" href="./NoticeBoardDetail.html" >スレッド3</a>
-        
-    </div>
-    <div class="box11">
-        <a class="button" href="./NoticeBoardDetail.html" >スレッド4</a>
-        
-    </div>
-           
-    <a href="./MainMenu.html" class="link button btn btn--orange btn--radius">メインページに戻る</a>
-    <a href="./NoticeBoardMake.html" class="link button btn btn--orange6 btn--radius">スレッドを立てる</a>
 </body>
 </html>

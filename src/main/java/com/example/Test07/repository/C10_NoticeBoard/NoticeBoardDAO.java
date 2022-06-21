@@ -1,12 +1,14 @@
 package com.example.Test07.repository.C10_NoticeBoard;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 
 @Service
@@ -21,7 +23,6 @@ public class NoticeBoardDAO{
     private final JdbcTemplate jdbcTemplate;
 
     public NoticeBoardDAO(JdbcTemplate jdbcTemplate){this.jdbcTemplate = jdbcTemplate;}
-
 
     /**
      * 投稿情報をDB(投稿Id,スレッドId,コメント)をDB(thread_post)に登録する。
@@ -84,6 +85,4 @@ public class NoticeBoardDAO{
 
         return NoticeBoard;
     }
-
-
-}
+  

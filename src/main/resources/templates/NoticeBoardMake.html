@@ -4,21 +4,15 @@
 <head>
     <meta charset="utf-8">
     <title>NoticeBoardMake</title>
-    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
-    
-
-<form>
-        <input class="text" type="text" placeholder="スレッド名入力欄"><!--  https://code-kitchen.dev/html/input-text/  -->
-        
-</form>
-    
-        <a href="./NoticeBoardList.html" class="link button btn btn--orange4 btn--radius">掲示板に戻る</a>
-        <a href="./NoticeBoardList.html" class="link button btn btn--orange6 btn--radius">入力する</a>
-    
+    <form action="/notice/make" class="parent">
+        <input class="text" type="text" name="title" placeholder="スレッド名入力欄"><!--  https://code-kitchen.dev/html/input-text/  -->
+        <input type="button" class="link button btn--orange5 btn--radius" value="キャンセル" onclick="history.back()"/>
+        <input type="submit" class="link button btn btn--orange6 btn--radius" value="入力する">
+        <input type="button" class="link button btn btn--orange6 btn--radius" value="戻る" onclick="history.back()">
+    </form>
 </body>
 </html>

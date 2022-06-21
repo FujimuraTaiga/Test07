@@ -4,25 +4,26 @@
 <head>
     <meta charset="utf-8">
     <title>学食メニュー | 芝浦便利システム</title>
-    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/style.css}">
-    <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 
 <body>
 
     <h1 class="title">メニューランキング</h1>
-    <ol class="food" th:each="menu : ${menuList}">
-        <li>
-            <form class="button" action="cafeteria/detail" method="get">
+    <ol class="food" >
+
+        <li  th:each="menu : ${menuList}">
+                <form class="button" action="cafeteria/detail" method="get">
                 <input type="hidden" name="menuId" th:value="${menu.id}">
                 <input type="submit" th:value="${menu.name}">
             </form>
         </li>
+
+
     </ol>
-    
-    <a href="/">戻る</a>
+    <div class="parent">
+    <a href="/" class="link button btn--orange btn--radius">メインページに戻る</a>
+    </div>
 </body>
 
 </html>
