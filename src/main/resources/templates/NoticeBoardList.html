@@ -4,25 +4,24 @@
 <head>
     <meta charset="utf-8">
     <title>NoticeBoardList</title>
-    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
     <h1 class="title">掲示板</h1>
-    <ol class="NoticeList" th:each="notice : ${noticeList}">
-        <li>
-            <form class="button" action="/notice/detail" method="get">
-                <input type="hidden" name="noticeId" th:value="${notice.id}">
-                <input type="submit" th:value="${notice.name}">
-            </form>
-        </li>
-    </ol>
-
-    <a href="/" class="link button btn btn--orange btn--radius">戻る</a>
-
-    <a href="/notice/thread" class="link button btn btn--orange btn--radius">スレッドを立てる</a>
-
+    <ul th:each="notice : ${noticeList}">
+        <div class="box11">
+            <li>
+                <form class="button" action="/notice/detail" method="get">
+                    <input type="hidden" name="noticeId" th:value="${notice.id}">
+                    <input type="submit" th:value="${notice.name}">
+                </form>
+            </li>
+        </div>
+    </ul>
+<div class="parent">
+    <input type="button" class="link button btn--orange5 btn--radius" value="メインページに戻る" onclick="history.back()"/>
+    <a href="/notice/thread" class="link button btn--orange ">スレッドを立てる</a>
+    </div>
 </body>
 </html>

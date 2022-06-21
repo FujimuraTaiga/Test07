@@ -4,16 +4,14 @@
 <head>
     <meta charset="utf-8">
     <title>ClassList</title>
-    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/style.css}">
-    <link rel="icon" type="image/png" href="images/favicon.png">
+
 </head>
 
 <body>
     <h1 class="title">授業一覧</h1>
-    <ol class="ClassList" th:each="class : ${classList}">
-        <li>
+    <ol class="ClassList">
+        <li th:each="class : ${classList}">
             <form class="button" action="/class/detail" method="get">
                 <input type="hidden" name="classId" th:value="${class.id}">
                 <input type="submit" th:value="${class.name}">
@@ -21,7 +19,7 @@
         </li>
     </ol>
 
-    <a href="/">戻る</a>
+    <a href="/" class="button btn--orange btn--radius">メインページに戻る</a>
     
 </body>
 

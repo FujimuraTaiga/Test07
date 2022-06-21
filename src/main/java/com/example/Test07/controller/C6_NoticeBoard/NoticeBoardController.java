@@ -29,13 +29,21 @@ public class NoticeBoardController {
     /*スレッドの詳細の表示*/
     @RequestMapping(value = "/detail")
     String detail(Model model, @RequestParam String noticeId){
-        model.addAttribute("notice",dao.readPost(noticeId));
+        model.addAttribute("noticeId",noticeId);
+        model.addAttribute("postList",dao.readPost(noticeId));
         return "NoticeBoardDetail.html";
     }
   
     @RequestMapping(value = "/thread")
     String review(){
         return "NoticeBoardMake.html";
+    }
+    
+    @RequestMapping(value = "/make")
+    String add(@RequestParam String title){
+        String id = UUID.randomUUID().toString().substring(0,8);
+        dao.createThread(new NoticeBoard(id,title));
+        return "redirect:/notice";
     }
 
     /*スレッドの新規作成*/
@@ -51,6 +59,6 @@ public class NoticeBoardController {
         String postId = UUID.randomUUID().toString().substring(0,8);
         dao.createPost(new ThreadPost(postId,noticeId,comment));
         redirectAttributes.addAttribute("noticeId",noticeId);
-        return "redirect:/detail";
+        return "redirect:/notice/detail";
     }
 }
