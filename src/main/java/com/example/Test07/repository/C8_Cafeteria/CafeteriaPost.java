@@ -1,6 +1,7 @@
 package com.example.Test07.repository.C8_Cafeteria;
 
 /**
+ * 2022/06/21
  * 食堂の投稿に関するデータを保持するデータレコード
  * @param postId 投稿ID
  * @param menuId メニューID

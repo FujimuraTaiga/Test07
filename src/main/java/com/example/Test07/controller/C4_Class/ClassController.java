@@ -12,8 +12,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.UUID;
 
 /**
+ * 2022/06/21
  * 授業に関するhttpリクエストに対応するクラス。
  * @author FujimuraTaiga
+ * ver. 1.0.0
  */
 
 @Controller

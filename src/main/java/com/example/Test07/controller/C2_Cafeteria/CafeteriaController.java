@@ -10,6 +10,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.UUID;
 
+/**
+ * 2022/06/21
+ * C2 学食コントローラ
+ * http://{domain}/cafeteria/{something}のリクエストに対応するクラス
+ * @author FujimuraTaiga
+ * ver. 1.0.0
+ */
+
 @Controller
 @RequestMapping(value = "/cafeteria")
 public class CafeteriaController {
@@ -19,12 +27,23 @@ public class CafeteriaController {
     @Autowired
     CafeteriaController(CafeteriaPostService service){this.service = service;}
 
+    /**
+     * http://{domain}/cafeteriaに対応。
+     * @param model
+     * @return 学食メニュー一覧画面を表示する。
+     */
     @RequestMapping(value = "")
     String top(Model model){
         model.addAttribute("menuList",service.readMenu());
         return "FoodList.html";
     }
 
+    /**
+     * http://{domain}/cafeteria/detailに対応。
+     * @param model
+     * @param menuId メニューを識別するId
+     * @return 学食メニュー詳細画面を表示する。
+     */
     @RequestMapping(value = "/detail")
     String list(Model model, @RequestParam String menuId){
         model.addAttribute("menu",service.findMenuById(menuId));    //DBからメニューデータを取得してhtmlに反映させる。
@@ -33,12 +52,26 @@ public class CafeteriaController {
         return "FoodDetail.html";
     }
 
+    /**
+     * http://{domain}/cafeteria/reviewに対応。
+     * @param model
+     * @param menuId メニューを識別するId
+     * @return 学食評価＆口コミ画面を表示する。
+     */
     @RequestMapping(value = "/review")
     String review(Model model, @RequestParam String menuId){
         model.addAttribute("menuId",menuId);
         return "FoodReviewComment.html";
     }
 
+    /**
+     * http://{domain}/cafeteria/postに対応。
+     * @param redirectAttributes
+     * @param menuId メニューを識別するためのId
+     * @param star 評価の数値
+     * @param comment コメント
+     * @return 学食詳細画面へリダイレクトする。
+     */
     @RequestMapping(value = "/post")
     String post(RedirectAttributes redirectAttributes, @RequestParam String menuId, @RequestParam int star, @RequestParam String comment){
 
