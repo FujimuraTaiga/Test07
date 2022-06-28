@@ -14,7 +14,6 @@ import java.util.List;
  * @author FujimuraTaiga
  * ver. 1.0.0
  */
-
 @Service
 public class NoticeBoardService {
     
