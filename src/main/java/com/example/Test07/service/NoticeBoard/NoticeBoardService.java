@@ -4,6 +4,7 @@ import com.example.Test07.repository.C10_NoticeBoard.NoticeBoard;
 import com.example.Test07.repository.C10_NoticeBoard.NoticeBoardDAO;
 import com.example.Test07.repository.C10_NoticeBoard.ThreadPost;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  * @author FujimuraTaiga
  * ver. 1.0.0
  */
-
+@Service
 public class NoticeBoardService {
     
     final NoticeBoardDAO dao;
