@@ -124,7 +124,6 @@ public class CafeteriaDAO {
                 .map((Map<String,Object> row) -> new CafeteriaRanking(
                         row.get("menuId").toString()
                 )).toList();
-        System.out.println(cafeteriaRanks);
         return cafeteriaRanks;
     }
 
