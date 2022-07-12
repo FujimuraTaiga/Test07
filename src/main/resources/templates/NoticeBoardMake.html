@@ -15,9 +15,9 @@
 </head>
 <body>
     <form action="/notice/make" class="parent">
-        <input class="text" type="text" name="title" placeholder="スレッド名入力欄" required><!--  https://code-kitchen.dev/html/input-text/  -->
+        <input class="text" type="text" name="title" placeholder="スレッド名入力欄" maxlength="30" required><!--  https://code-kitchen.dev/html/input-text/  -->
         <input type="button"class="link　button btn--orange5 btn--radius" value="戻る" onclick="location.href = '/notice'" >
-        <input type="submit" class="link button btn btn--orange6 btn--radius" value="入力する" onclick="location.href = '/thread'">
+        <input type="submit" class="link button btn btn--orange6 btn--radius" value="入力する">
 
     </form>
 </body>
