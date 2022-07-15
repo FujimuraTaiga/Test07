@@ -25,7 +25,7 @@ public class NoticeBoardDAO{
     public NoticeBoardDAO(JdbcTemplate jdbcTemplate){this.jdbcTemplate = jdbcTemplate;}
 
     /**
-     * 投稿情報をDB(投稿Id,スレッドId,コメント)をDB(thread_post)に登録する。
+     * 投稿情報(投稿Id,スレッドId,コメント)をDB(thread_post)に登録する。
      * ＠param ThreadPost スレッドへの投稿情報を登録するためのpostId,threadId,commentを持つ。
      */
     public void createPost(ThreadPost post){
@@ -36,7 +36,7 @@ public class NoticeBoardDAO{
 
 
     /**
-     * 投稿情報をDB(投稿Id,スレッドId,コメント)をDB(thread_post)から読み取る。
+     * 投稿情報をDB(thread_post)から読み取る。
      * ＠param threadId 投稿を識別するId
      */
     public List<ThreadPost> readPost(String threadId){
